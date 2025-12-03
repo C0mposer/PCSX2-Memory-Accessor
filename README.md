@@ -1,6 +1,6 @@
 # PCSX2 Memory Accessor
 
-A Python wrapper for PCSX2's Pine IPC protocol, allowing you to read and write PS2 memory from Python scripts.
+A Python API for reading & writing PCSX2\'s emulator memory, using the Pine IPC protocol.
 
 ## Installation
 ```
@@ -83,4 +83,5 @@ pcsx2_pine.write_pcsx2_memory(address, data_bytes)
 ## Links
 
 - PCSX2: https://pcsx2.net/
+
 - Pine:  https://github.com/GovanifY/pine
