@@ -10,7 +10,7 @@ pip install pcsx2-memory-accessor
 **Enable Pine IPC in PCSX2:**
    - Open PCSX2
    - Go to Settings
-   - Under Advanced, scroll down to PINE Setting, check enable. Set the port to 28011
+   - Under Advanced, scroll down to PINE Settings, check enable. Set the port to 28011
    - Restart PCSX2
 
 ## Quick Start
@@ -84,3 +84,4 @@ pcsx2_memory_accessor.write_pcsx2_memory(address, data_bytes)
 
 - PCSX2: https://pcsx2.net/
 - Pine:  https://github.com/GovanifY/pine
+
