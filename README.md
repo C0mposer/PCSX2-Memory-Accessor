@@ -16,7 +16,7 @@ pip install pcsx2-memory-accessor
 ## Quick Start
 
 ```python
-import pcsx2_pine as p
+import pcsx2_memory_accessor as p
 
 # Initialize connection
 if p.init():
@@ -83,5 +83,4 @@ pcsx2_pine.write_pcsx2_memory(address, data_bytes)
 ## Links
 
 - PCSX2: https://pcsx2.net/
-
 - Pine:  https://github.com/GovanifY/pine
