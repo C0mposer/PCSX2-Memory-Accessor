@@ -1,14 +1,13 @@
-# PCSX2 Pine IPC Python Wrapper
+# PCSX2 Memory Accessor
 
 A Python wrapper for PCSX2's Pine IPC protocol, allowing you to read and write PS2 memory from Python scripts.
 
 ## Installation
+```
+pip install pcsx2-memory-accessor
+```
 
-1. **Download the release**
-   - `pcsx2_pine.py` - Python module
-   - 'libpcsx2_ipc_bulk_c.dll' - Modified Pine IPC DLL
-
-2. **Enable Pine IPC in PCSX2:**
+**Enable Pine IPC in PCSX2:**
    - Open PCSX2
    - Go to Settings
    - Under Advanced, scroll down to PINE Setting, check enable. Set the port to 28011
