@@ -6,6 +6,7 @@ import os
 import platform
 import struct
 from typing import Optional
+from importlib import resources
 
 libipc = None
 ipc_handle = None
@@ -57,7 +58,7 @@ def _define_signatures():
 
 def init() -> bool:
     """
-    Initialize the PCSX2 IPC connection.
+    Initialize the PCSX2 IPC connection
     """
     global libipc, ipc_handle
     
@@ -65,29 +66,26 @@ def init() -> bool:
         print("Warning: PCSX2 IPC already initialized.")
         return True
 
-    # Determine library name based on OS
-    lib_name = "dll/libpcsx2_ipc_bulk_c"
+    # Determine library extension based on OS
     cur_os = platform.system()
-    
-    if cur_os == "Linux":
-        lib_ext = ".so"
-    elif cur_os == "Windows":
+    if cur_os == "Windows":
         lib_ext = ".dll"
-    elif cur_os == "Darwin":
-        lib_ext = ".dylib"
-    else:
-        print(f"ERROR: Unsupported OS: {cur_os}")
-        return False
+    elif cur_os == "Linux": # Linux .so not included
+        lib_ext = ".so"
 
-    lib_full_name = lib_name + lib_ext
+    dll_resource = resources.files('pcsx2_memory_accessor').joinpath(f'dll/libpcsx2_ipc_bulk_c{lib_ext}')
+    
+    lib_path_str = ""
     
     try:
-        # Load library from same directory as this script
-        lib_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), lib_full_name)
-        libipc = ctypes.CDLL(lib_path)
-        
-        _define_signatures()
-        ipc_handle = libipc.pcsx2ipc_new()
+        with resources.as_file(dll_resource) as lib_path:
+            lib_path_str = str(lib_path)
+            #print(f"Attempting to load library from: {lib_path_str}")
+            
+            libipc = ctypes.CDLL(lib_path_str)
+            
+            _define_signatures()
+            ipc_handle = libipc.pcsx2ipc_new()
 
         # Check for initialization errors
         error = get_last_error()
@@ -100,7 +98,7 @@ def init() -> bool:
         return True
         
     except OSError as e:
-        print(f"ERROR: Could not load library '{lib_full_name}'")
+        print(f"ERROR: Could not load library '{lib_path_str}'")
         print(f"Details: {e}")
         return False
 
