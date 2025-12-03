@@ -1,6 +1,3 @@
-"""
-Provides convenient access to PCSX2 memory via the Pine IPC protocol.
-"""
 import ctypes
 import os
 import platform
