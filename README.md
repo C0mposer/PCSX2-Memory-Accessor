@@ -53,22 +53,22 @@ if p.init():
 ## API Reference
 ```python
 # Read single values
-health = pcsx2_pine.read_u8(address)   # Read 8-bit integer
-score = pcsx2_pine.read_u16(address)   # Read 16-bit integer
-value = pcsx2_pine.read_u32(address)   # Read 32-bit integer
-big_num = pcsx2_pine.read_u64(address) # Read 64-bit integer
+health = pcsx2_memory_accessor.read_u8(address)   # Read 8-bit integer
+score = pcsx2_memory_accessor.read_u16(address)   # Read 16-bit integer
+value = pcsx2_memory_accessor.read_u32(address)   # Read 32-bit integer
+big_num = pcsx2_memory_accessor.read_u64(address) # Read 64-bit integer
 
 # Write single values
-pcsx2_pine.write_u8(address, value)    # Write 8-bit integer
-pcsx2_pine.write_u16(address, value)   # Write 16-bit integer
-pcsx2_pine.write_u32(address, value)   # Write 32-bit integer
-pcsx2_pine.write_u64(address, value)   # Write 64-bit integer
+pcsx2_memory_accessor.write_u8(address, value)    # Write 8-bit integer
+pcsx2_memory_accessor.write_u16(address, value)   # Write 16-bit integer
+pcsx2_memory_accessor.write_u32(address, value)   # Write 32-bit integer
+pcsx2_memory_accessor.write_u64(address, value)   # Write 64-bit integer
 
 # Read multiple bytes (returns bytes object)
-data = pcsx2_pine.read_pcsx2_memory(address, num_bytes)
+data = pcsx2_memory_accessor.read_pcsx2_memory(address, num_bytes)
 
 # Write multiple bytes
-pcsx2_pine.write_pcsx2_memory(address, data_bytes)
+pcsx2_memory_accessor.write_pcsx2_memory(address, data_bytes)
 ```
 
 ## Requirements
